@@ -2,7 +2,7 @@ package storage
 
 import (
     "errors"
-    "fintech-ledger-demo/internal/models"
+    "github.com/portfoliodemo/fintech-ledger-demo/internal/models"
 )
 
 type MockRepository struct {

@@ -1,6 +1,6 @@
 package storage
 
-import "fintech-ledger-demo/internal/models"
+import "github.com/portfoliodemo/fintech-ledger-demo/internal/models"
 
 type Repository interface {
     SaveTransaction(tx *models.Transaction) error
