@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { getBalance, credit, debit } from "./api"
+import { getBalance, addCredit, addDebit } from "./api"
 
 function App() {
   const [userId, setUserId] = useState(1)
@@ -20,7 +20,7 @@ function App() {
   const handleCredit = async () => {
     try {
       setError("")
-      await credit(userId, Number(amount))
+      await addCredit(userId, Number(amount))
       await loadBalance()
     } catch (err) {
       setError(err.message)
@@ -30,7 +30,7 @@ function App() {
   const handleDebit = async () => {
     try {
       setError("")
-      await debit(userId, Number(amount))
+      await addDebit(userId, Number(amount))
       await loadBalance()
     } catch (err) {
       setError(err.message)
@@ -38,7 +38,7 @@ function App() {
   }
 
   return (
-    <div style={{ padding: 24, maxWidth: 400 }}>
+    <div>
       <h2>Fintech Ledger Demo</h2>
 
       <label>User ID</label>
