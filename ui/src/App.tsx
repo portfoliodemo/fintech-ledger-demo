@@ -4,18 +4,19 @@ import { getBalance, addCredit, addDebit } from "./api"
 function App() {
   const [userId, setUserId] = useState(1)
   const [amount, setAmount] = useState("")
-  const [balance, setBalance] = useState(null)
+  const [balance, setBalance] = useState<number | null>(null)
   const [error, setError] = useState("")
 
   const loadBalance = async () => {
     try {
       setError("")
-      const data = await getBalance(userId)
-      setBalance(data.balance)
+      const balance = await getBalance(userId)
+      setBalance(balance)
     } catch (err) {
-      setError(err.message)
+      setError((err as Error).message)
     }
   }
+  
 
   const handleCredit = async () => {
     try {
@@ -23,8 +24,8 @@ function App() {
       await addCredit(userId, Number(amount))
       await loadBalance()
     } catch (err) {
-      setError(err.message)
-    }
+      setError((err as Error).message)
+      }    
   }
 
   const handleDebit = async () => {
@@ -33,8 +34,8 @@ function App() {
       await addDebit(userId, Number(amount))
       await loadBalance()
     } catch (err) {
-      setError(err.message)
-    }
+      setError((err as Error).message)
+      }    
   }
 
   return (
@@ -42,7 +43,11 @@ function App() {
       <h2>Fintech Ledger Demo</h2>
 
       <label>User ID</label>
-      <input value={userId} onChange={e => setUserId(e.target.value)} />
+      <input
+        type="number"
+        value={userId}
+        onChange={e => setUserId(Number(e.target.value))}
+      />
 
       <label>Amount</label>
       <input value={amount} onChange={e => setAmount(e.target.value)} />

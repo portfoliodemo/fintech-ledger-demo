@@ -69,6 +69,13 @@ isolated, and deterministic.
 
 ---
 
+### Requirements
+
+- Node.js >= 22
+- npm >= 10
+
+---
+
 ## Notes
 
 AI tooling was used to accelerate initial scaffolding and iteration.
