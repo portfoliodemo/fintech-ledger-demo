@@ -39,7 +39,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="widget-container">
       <h2>Fintech Ledger Demo</h2>
 
       <label>User ID</label>
@@ -48,6 +48,7 @@ function App() {
         value={userId}
         onChange={e => setUserId(Number(e.target.value))}
       />
+
 
       <label>Amount</label>
       <input value={amount} onChange={e => setAmount(e.target.value)} />

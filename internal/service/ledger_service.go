@@ -22,7 +22,7 @@ func NewLedgerService(repo storage.Repository) *LedgerService {
 // AddCredit adds a positive credit transaction for a user
 func (s *LedgerService) AddCredit(userID int64, amount float64) (*models.Transaction, error) {
     if amount <= 0 {
-        return nil, fmt.Errorf("amount must be positive")
+        return nil, fmt.Errorf("Amount must be positive.")
     }
 
     tx := &models.Transaction{
@@ -58,7 +58,7 @@ func (s *LedgerService) GetUserBalance(userID int64) (float64, error) {
 // AddDebit subtracts a positive amount from the user's balance if sufficient funds exist
 func (s *LedgerService) AddDebit(userID int64, amount float64) (*models.Transaction, error) {
     if amount <= 0 {
-        return nil, fmt.Errorf("amount must be positive")
+        return nil, fmt.Errorf("Amount must be positive.")
     }
 
     // Check current balance
@@ -68,7 +68,7 @@ func (s *LedgerService) AddDebit(userID int64, amount float64) (*models.Transact
     }
 
     if amount > balance {
-        return nil, fmt.Errorf("insufficient funds: current balance %.2f", balance)
+        return nil, fmt.Errorf("Insufficient funds: current balance %.2f", balance)
     }
 
     tx := &models.Transaction{
