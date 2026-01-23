@@ -53,7 +53,7 @@ function App() {
       <label>Amount</label>
       <input value={amount} onChange={e => setAmount(e.target.value)} />
 
-      <div style={{ marginTop: 12 }}>
+      <div className="button-group">
         <button onClick={handleCredit}>Credit</button>
         <button onClick={handleDebit}>Debit</button>
         <button onClick={loadBalance}>Get Balance</button>
